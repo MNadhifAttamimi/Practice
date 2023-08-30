@@ -7,7 +7,7 @@
   },
   "name": "latihan-jest",
   "description": "----\r 1. install express in terminal `npm i express`\r 2. buat file dengan nama `app.js`. jika suda ada, abaikan",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "scripts": {
     "test": "npx jest",
