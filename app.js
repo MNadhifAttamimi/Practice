@@ -21,3 +21,4 @@ app.listen(3000, () => {
 })
 //cara jalanin
 //jalaninnya dgn menulis node app.js di terminal
+// jika ingin mematikannya click ( crtl + c )
