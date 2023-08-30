@@ -1,3 +1,8 @@
+# Instalasi Server
+----
+1. install express in terminal `npm i express`
+2. buat file dengan nama `app.js`. jika suda ada, abaikan
+
 # Tutorial
 
 1.echo "# Practice" >> README.md.
