@@ -4,6 +4,8 @@ const app = express();
 
 //example sederhana
 
+app.use(express.json())
+
 /**
     req adalah singkatan dari request yg isinya yg dikirimkan oleh client.
     seperti body, parametery, query
@@ -28,7 +30,9 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-    res.send('post data')
+    let name = req.body.name
+
+    res.send('Assalamualaikum Kak' + name)
 })
 
 app.put('/', (req, res) => {

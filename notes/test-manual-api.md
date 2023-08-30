@@ -6,3 +6,14 @@
 - jalankan server dengan `npm run start`
 - jgn lupa simpan dengan `ctrl + s`
 - jalankan dengan click tombol `send`
+
+## test secara manual dengan terminal
+----
+- untuk get
+`curl -X  GET http://localhost:3000`
+- untuk update
+`curl -X  PUT http://localhost:3000`
+- untuk tambah data
+`curl -X  POST -d '{"name":"Attamimi"}' http://localhost:3000`
+- untuk delete data
+`curl -X  DELETE http://localhost:3000`
