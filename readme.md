@@ -1,9 +1,18 @@
 # Tutorial
 
-echo "# Practice" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/MNadhifAttamimi/Practice.git
-git push -u origin main
+1.echo "# Practice" >> README.md.
+
+2.git init.
+
+3.git add README.md.
+
+4.git commit -m "first commit".
+
+5.git branch -M main.
+
+6.git remote add origin https://github.com/MNadhifAttamimi/Practice.git.
+
+7.git push -u origin main.
+
+Note:
+buat file readme.md dan baca format penulisan di https://www.markdownguide.org/basic-syntax/ masukkan.
