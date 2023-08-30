@@ -22,3 +22,20 @@ app.listen(3000, () => {
 //cara jalanin
 //jalaninnya dgn menulis node app.js di terminal
 // jika ingin mematikannya click ( crtl + c )
+
+app.get('/', (req, res) => {
+    res.send('Hello world')
+})
+
+app.post('/', (req, res) => {
+    res.send('post data')
+})
+
+app.put('/', (req, res) => {
+    res.send('update data')
+})
+
+app.delete('/', (req, res) => {
+    res.send('delete data')
+})
+
