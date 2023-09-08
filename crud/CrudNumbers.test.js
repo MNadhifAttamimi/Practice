@@ -7,14 +7,14 @@ describe('test crud numbers', () => {
 
         expect(result).toEqual([5])
     })
-})  
+})
 
- test('when readAll should success', () => {
-     let bank = [3, 4, 5];
-     let result = readAll(bank)
+test('when readAll should success', () => {
+    let bank = [3, 4, 5];
+    let result = readAll(bank)
 
-     expect(result).toEqual([3, 4, 5])
- })
+    expect(result).toEqual([3, 4, 5])
+})
 
 test('when readbyIdx should success', () => {
     let bank = [3, 4, 5];
@@ -25,9 +25,9 @@ test('when readbyIdx should success', () => {
 
 test('when updateData should success', () => {
     let bank = [3, 4, 5];
-    let result = updateData(bank,1, 8)
+    let result = updateData(bank, 1, 8)
 
-    expect(result).toEqual([3, 8 ,5])
+    expect(result).toEqual([3, 8, 5])
 })
 
 test('when deleteData should success', () => {
@@ -38,5 +38,5 @@ test('when deleteData should success', () => {
 })
 
 
- 
+
 

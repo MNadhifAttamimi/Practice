@@ -1,45 +1,31 @@
 const express = require('express');
-
+const { postDataUserHandler } = require('./handlers/post-data-user-handler');
+const { getDataUserHandler } = require('./handlers/get-data-user-handler');
+const { putDataUserHandler } = require('./handlers/put-data-user-handler');
+const { delDataUserHandler } = require('./handlers/del-data-user-handler');
 const app = express();
 
-//example sederhana
+// Example
+/*
+    - req = singkatan dari request. Yang isinya yang dikirimkan oleh client. Contoh seperti body, parameter, query
+    - res = singkatan dari response. Yang isinya kita kirim ke client. Contoh seperti data, json, html, dan codeHTTP (default:200)
+*/
 
-app.use(express.json())
+app.use(express.json());
 
-/**
-    req adalah singkatan dari request yg isinya yg dikirimkan oleh client.
-    seperti body, parametery, query
-    res adalah singkatan dari responss yg isinya kita kirim kje client.
-    contoh seperti data, json, html, dan codeHTTP (default:200)   
-    */
+app.get('/', getDataUserHandler);
 
-app.get('/', (req, res) => {
-    res.send('Hello World')
-})
+app.post('/', postDataUserHandler);
 
-// biar bisa running
-app.listen(3000, () => {
-    console.log('Hai DEEPs!, Servermu udah jalan di http://localhost:3000')
-})
-//cara jalanin
-//jalaninnya dgn menulis node app.js di terminal
-// jika ingin mematikannya click ( crtl + c )
+app.put('/', putDataUserHandler);
 
-app.get('/', (req, res) => {
-    res.send('Hello world')
-})
+app.delete('/', delDataUserHandler);
 
-app.post('/', (req, res) => {
-    let name = req.body.name
+// Untuk running
+const server = app.listen(3000, () => {
+    console.log("Halo cuyy, Server sudah jalan di https://localhost:3000")
+});
 
-    res.send('Assalamualaikum Kak' + name)
-})
+module.exports = server;
 
-app.put('/', (req, res) => {
-    res.send('update data')
-})
-
-app.delete('/', (req, res) => {
-    res.send('delete data')
-})
-
+// Untuk menjalankan ketik node app.js di terminal. Untuk cancel tekan Ctr + c.
