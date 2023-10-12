@@ -4,16 +4,17 @@
     "supertest": "^6.3.3"
   },
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "mongodb": "^6.1.0"
   },
   "name": "latihan-jest",
   "description": "----\r 1. install express in terminal `npm i express`\r 2. buat file dengan nama `app.js`. jika suda ada, abaikan",
   "version": "1.0.2",
   "main": "index.js",
   "scripts": {
-    "test": "npx jest",
+    "test": "npx jest --detectOpenHandles",
     "start": "node app.js",
-    "dev" : "node --watch app.js"
+    "dev": "node --watch app.js"
   },
   "repository": {
     "type": "git",

@@ -1,36 +1,51 @@
+const { savingData, showAllData } = require('../gateaways/mongodb-gateway');
+const { nameValidation, ageValidation } = require('../validation');
 
-const { nameValidation, ageValidation } = require('../validation')
-const { showAllData, savingData } = require('../gateaways/memory-storage-gateway');
+const postDataUserHandler = async (req, res) => {
+    try {
+        // mengecek property name
+        if (!req.body.name) {
+            res.status(400);
+            return res.send({
+                error: true,
+                message: 'tidak memiliki paramater nama',
+            });
+        }
+        // @todo pengecekan property umur
+        if (!req.body.age) {
+            res.status(400);
+            return res.send({
+                error: true,
+                message: 'tidak memiliki paramater umur',
+            });
+        }
 
-const postDataUserHandler = (req, res) => {
-    if (!req.body.name) {
-        res.status(400)
-        return res.send({ error: true, message: 'tidak memiliki parameter nama' });
-    };
+        // mengambil data nama
+        // let name = req.body.name; // mengambil data name
+        let { name, age } = req.body;
+        // @todo pemanggilan data umur
 
-    if (!req.body.age) {
-        res.status(400)
-        return res.send({ error: true, message: 'tidak memiliki parameter umur' });
-    };
+        // melakukan validasi nama
+        let realNameRes = nameValidation(name);
+        let realAgeRes = ageValidation(age);
+        // @todo melakukan validasi umur
 
-    let { name, age } = req.body;
+        if (realNameRes.error) {
+            res.status(400);
+            return res.send(realNameRes);
+        }
+        // @todo lempar error umur
+        if (realAgeRes.error) {
+            res.status(400);
+            return res.send(realAgeRes);
+        }
 
-    // Mengambil data nama
-    let realNameRes = nameValidation(name);
-    let realAgeRes = ageValidation(age);
+        await savingData(realNameRes.data, realAgeRes.data); // simpan data di memori (memoryGateway)
 
-    if (realNameRes.error) {
-        res.status(400)
-        return res.send(realNameRes)
-    };
-
-    if (realAgeRes.error) {
-        res.status(400)
-        return res.send(realAgeRes)
-    };
-
-    savingData(realNameRes.data, realAgeRes.data) // simpan data di memori (memoriGateway)
-    res.send({ data: showAllData() });
+        res.send({ data: await showAllData() }); // @todo menambahkan data umur yg sudah divalidasi
+    } catch (error) {
+        res.send({ error: true, message: error.message });
+    }
 };
 
-module.exports = { postDataUserHandler }
+module.exports = { postDataUserHandler };

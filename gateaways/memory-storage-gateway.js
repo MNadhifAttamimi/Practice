@@ -1,28 +1,60 @@
-const { createData, updateData, deleteData, findByname } = require("../crud/CrudObj");
+const {
+  createData,
+  updateData,
+  deleteData,
+  findByName,
+  updateAllData,
+  checkId,
+} = require('../crud/CrudObjects');
 
 let dataMemory = [];
 
 const savingData = (name, age) => {
-    let id = Math.ceil(Math.random() * 1000)
-    dataMemory = createData(dataMemory, { id, name, age });
+  let id = Math.ceil(Math.random() * 1000);
+  dataMemory = createData(dataMemory, { id, name, age });
 };
 
 const showAllData = () => {
-    return dataMemory;
+  return dataMemory;
 };
 
 const getDataByName = (name) => {
-    return findByname(dataMemory, name)
-}
+  return findByName(dataMemory, name);
+};
 
-const editDataName = (id, name) => {
-    dataMemory = updateData(dataMemory, id, name)
-    return dataMemory;
-}
+const editNamaData = (id, name) => {
+  dataMemory = updateData(dataMemory, id, name);
+
+  return dataMemory;
+};
+
+const editNamaUmurData = (id, name, age) => {
+  dataMemory = updateAllData(dataMemory, id, { name, age });
+
+  return dataMemory;
+};
+
+const isIdExist = (id) => {
+  return checkId(dataMemory, id);
+};
 
 const removeData = (id) => {
-    dataMemory = deleteData(dataMemory, id);
-    return dataMemory;
-}
+  // ubah ke integer dari string
+  if (typeof id === 'string') {
+    id = parseInt(id);
+  }
 
-module.exports = { savingData, showAllData, editDataName, removeData, getDataByName };
+  dataMemory = deleteData(dataMemory, id);
+
+  return dataMemory;
+};
+
+module.exports = {
+  savingData,
+  showAllData,
+  editNamaData,
+  removeData,
+  getDataByName,
+  editNamaUmurData,
+  isIdExist,
+};``

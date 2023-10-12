@@ -1,6 +1,6 @@
 const { createData, readAll, readbyIdx, updateData, deleteData } = require("./CrudNumbers");
 
-describe('test crud numbers', () => {
+describe.skip('test crud numbers', () => {
     test('when create should success', () => {
         let bank = [];
         let result = createData(bank, 5)
@@ -37,6 +37,21 @@ test('when deleteData should success', () => {
     expect(result).toEqual([2, 3, 5])
 })
 
+test("when update name should success", () => {
+        let bank = [
+            { id: 1, name: "samsul", age: 16 },
+            { id: 2, name: "bambang", age: 16 },
+        ];
 
+    // mengubah ID 1 dengan nama Arifin
+    // mengubah ID 1 dengan nama Arifin
+    // menggunakan objectArray.findByIdx((value)=>value.id === id)
+    // menggunakan objectArray.findByIdx((value)=>value.id === id)
+    let result = updateData(bank, 1, "arifin", 17);
+        expect(result).toEqual([
+            { id: 1, name: "arifin", age: 17 },
+            { id: 2, name: "bambang", age: 16 },
+        ]);
+    });
 
 

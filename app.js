@@ -4,6 +4,7 @@ const { getDataUserHandler } = require('./handlers/get-data-user-handler');
 const { putDataUserHandler } = require('./handlers/put-data-user-handler');
 const { delDataUserHandler } = require('./handlers/del-data-user-handler');
 const app = express();
+app.use(express.static('public'));
 
 // Example
 /*
@@ -13,17 +14,18 @@ const app = express();
 
 app.use(express.json());
 
-app.get('/', getDataUserHandler);
+app.get('/api/user', getDataUserHandler);
 
-app.post('/', postDataUserHandler);
+app.post('/api/user', postDataUserHandler);
 
-app.put('/', putDataUserHandler);
+app.put('/api/user', putDataUserHandler);
 
-app.delete('/', delDataUserHandler);
+app.delete('/api/user', delDataUserHandler);
 
-// Untuk running
-const server = app.listen(3000, () => {
-    console.log("Halo cuyy, Server sudah jalan di https://localhost:3000")
+const port = 3001;
+
+const server = app.listen(port, () => {
+    console.log('Hai Dev, Servermu udah jalan di http://localhost:' + port); // IP:127.0.0.1 -> domain=> localhost
 });
 
 module.exports = server;

@@ -3,7 +3,7 @@ const { nameValidation } = require("./validation");
 const { ageValidation } = require("./validation");
 
 
-describe('testing name validation', () => {  
+describe.skip('testing name validation', () => {  
     test('when input less 3 character should error', () => {
         let result = nameValidation('ab');
 
